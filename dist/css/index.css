@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic+SC&family=Poppins&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+section{
+  padding: 0 14%;
+}
+
+.index{
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180.5deg, rgb(34, 126, 34) 8.5%, rgb(99, 162, 17) 118.2%);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+.index-text{
+  width: 146%;
+}
+.index-text h5{
+  font-size: 12px;
+  font-weight: bold;
+  color: #001300;
+  margin-bottom: 20px;
+  margin-left: 2%;
+  text-transform: uppercase;
+}
+.index-text h1{
+  font-size: 60px;
+  line-height: 1;
+  color: #001300;
+  margin: 0 0 12px;
+}
+.index-text h4{
+  font-size: 14px;
+  font-weight: 600;
+  color: #001300;
+  margin-bottom: 30px;
+  margin-left: 2%;
+  letter-spacing: 1.5px;
+}
+/*.index-text p{
+  color: black;
+  font-size: 12px;
+  line-height: 1.9;
+  margin-bottom: 40px;
+  text-align: justify;
+  margin-left: 2%;
+}*/
+
+.index-img img{
+  height: auto;
+  margin-left: 30%;
+}
+
+.index-text a{
+  display: inline-block;
+  color: white;
+  background: #001300;
+  padding: 12px 30px;
+  line-height: 1.4;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+  margin-left: 2%;
+}
+.index-text a:hover{
+  background: black;
+}
+
+.icons{
+  position: absolute;
+  top: 50%;
+  padding: 0 4.5%;
+  transform: translateY(-50%);
+}
+.icons i{
+  display: block;
+  margin: 26px 0;
+  font-size: 24px;
+  color: white;
+  transition: all .50s ease;
+}
+.icons i:hover{
+  transform: translateY(-5px);
+  color: #001300;
+}

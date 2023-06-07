@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+<body>
+
+  <header>
+
+    <a href="home.html" class="brand">Garbo Monitoring</a>
+
+    <div class="menu-btn"></div>
+
+      <div class="navigation">
+        <div class="navigation-items">
+          <a href="home.html">Home</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="location.html">Location</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <img src="assets/img/utilities/user.png" class="user" onclick="toggleMenu()">
+
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="assets/img/utilities/iuser.png">
+            <h3>Juan Dela Cruz</h3>
+          </div>
+          <hr>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/profile.png">
+            <p>Edit Profile</p>
+            <span>></span>
+          </a>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/settings.png">
+            <p>Settings & Privacy</p>
+            <span>></span>
+          </a>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/help.png">
+            <p>Help & Support</p>
+            <span>></span>
+          </a>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/logout.png">
+            <p>Logout</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+  </header>
+
+  <section class="home" id="home">
+
+    <img src="assets/img/bg/1.jpg" class="image active" cover no-repeat>
+    <img src="assets/img/bg/2.jpg" class="image" cover no-repeat>
+    <img src="assets/img/bg/3.jpg" class="image" cover no-repeat>
+    <img src="assets/img/bg/4.jpg" class="image" cover no-repeat>
+
+    <div class="content active">
+      <h1>hello.<br><span>iliganons</span></h1>
+      <p>Thank you for using the <strong style="color: black;">Garbo Monitoring</strong> app. <strong style="color: black;">Garbo Monitoring</strong> helps you keep updated about the garbage collection schedules in your respective barangays.</p>
+    </div>
+    <div class="content">
+      <h1>waste.<br><span>destination</h1>
+      <p>Since most garbage collectors won't pick up waste in secluded areas, residents can now put their trash in their respective waste destination points as this app locates their barangay waste destinations accordingly.</p>
+      <a href="location.html">Explore</a>
+    </div>
+
+    <div class="content">
+      <h1>keep.<br><span>updated</span></h1>
+      <p>Moreover, you don't need to plot your garbage collection schedules manually, as it is already plotted in the app.</p>
+      <a href="schedule.html">Explore</a>
+    </div>
+
+    <div class="content">
+      <h1>daily.<br><span>reminder</span></h1>
+      <p>Through using this app, missed garbage collection schedule is not a problem no more! We keep you updated by sending you an SMS blast when it's your barangay's turn for garbage collection.</p>
+
+      <div class="button">
+        <a href="">We'll keep you posted!</a>
+      </div>
+      
+    </div>
+
+    <div class="media-icons">
+      <a href=""><i class="fa-brands fa-facebook"></i></a>
+      <a href=""><i class="fa-brands fa-instagram"></i></a>
+      <a href=""><i class="fa-brands fa-twitter"></i></a>
+    </div>
+
+    <div class="slider-navigation">
+      <div class="nav-btn active"></div>
+      <div class="nav-btn"></div>
+      <div class="nav-btn"></div>
+      <div class="nav-btn"></div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="./js/home.js"></script>
+
+</body>
+</html>

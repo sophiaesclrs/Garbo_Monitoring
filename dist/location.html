@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/location.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+<body>
+
+  <header>
+
+    <a href="home.html" class="brand">Garbo Monitoring</a>
+
+    <div class="menu-btn"></div>
+
+      <div class="navigation">
+        <div class="navigation-items">
+          <a href="home.html">Home</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="location.html">Location</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <img src="assets/img/utilities/user.png" class="user" onclick="toggleMenu()">
+
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="assets/img/utilities/iuser.png">
+            <h3>Juan Dela Cruz</h3>
+          </div>
+          <hr>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/profile.png">
+            <p>Edit Profile</p>
+            <span>></span>
+          </a>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/settings.png">
+            <p>Settings & Privacy</p>
+            <span>></span>
+          </a>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/help.png">
+            <p>Help & Support</p>
+            <span>></span>
+          </a>
+
+          <a href="" class="sub-menu-link">
+            <img src="assets/img/utilities/logout.png">
+            <p>Logout</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+  </header>
+
+  <section class="location" id="location">
+    <div class="content">
+      <div class="instruction">
+        <p><strong>NOTE:</strong> According to the address you have registered in the system, this is where you'll find your <strong>barangay's waste destination point</strong>. Please follow the pin shown below.</p>
+      </div>
+
+      <div class="map">
+        <!--daeee dnhi ibutang ang map...-->
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="./js/location.js"></script>
+</body>
+</html>

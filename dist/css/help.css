@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 12px;
+}
+
+body{
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180.5deg, rgb(34, 126, 34) 8.5%, rgb(99, 162, 17) 118.2%);
+  display: flex;
+  justify-content: center;
+}
+
+.container{
+  position: relative;
+  background: #fff;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+}
+
+.title {
+  margin-top: 20px;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.left{
+  position: relative;
+  width: 350px;
+  margin-left: 40px;
+}
+.left-img{
+  position: relative;
+  margin-top: -3px;
+  width: 320px;
+}
+
+.content{
+  margin-left: 40px;
+  width: 450px;
+}
+
+.question-answer{
+  width: 100%;
+}
+
+.question{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e8e8e8;
+  border-radius: 2px;
+  padding: 3.6px 5px;
+  width: 420px;
+  cursor: pointer;
+  transition: 0.55s ease;
+}
+.question:hover{
+  background: #e8e8e8;
+}
+
+.title-question {
+  margin: 1.4rem 0rem;
+  font-weight: 500;
+  font-size: 1em;
+  transition: all 0.5s ease;
+}
+
+.btn {
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.up-icon {
+  display: none;
+}
+
+.answer {
+  background: whitesmoke;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 15px;
+  width: 420px;
+  display: none;
+}
+.answer p{
+  font-size: 0.90rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+.answer a{
+  color: black;
+  font-weight: 600;
+  text-decoration: none;
+}
+.answer a:hover{
+  color: #137413;
+}
+
+.show-text .answer {
+  position: absolute;
+  display: block;
+}
+.show-text .up-icon {
+  display: inline;
+}
+.show-text .down-icon {
+  display: none;
+}
+
+.back-icon .back{
+  position: absolute;
+  background: none;
+  margin-top: 42%;
+  margin-left: 4%;
+  margin-right: 92%;
+  display: flex;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+.back .btn-prev:hover{
+  transform: translateX(-5px);
+}
+
+@media screen and (min-width: 992px) {
+  .left {
+    width: 920px;
+    height: 0;
+    display: flex;
+  }
+
+  .left-img {
+    position: relative;
+    width: 420px;
+    top: 88px;
+  }
+
+  .question-answer {
+    width: 380px;
+  }
+
+  .content{
+    margin-top: 85px;
+  }
+
+  .title {
+    margin-top: 50px;
+    font-size: 3rem;
+  }
+}
+
+

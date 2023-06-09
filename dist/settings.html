@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/settings.css">
+
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+
+<body>
+  
+  <div class="container">
+    <h1 class="title">Settings</h1>
+
+    <p><strong>Note:</strong><br> This is the Settings page. Unfortunately, this page is still on the process. Instead, please click the <strong>right arrow</strong> to redirect you to the help page or click the <strong>left arrow</strong> if you want to go back to the home page. We're sorry for the inconvenience. Thank you.</p>
+
+    <div class="btns">
+        <a href="home.html" class="btn btn-prev">
+          <img width="36" height="36" src="https://img.icons8.com/ios-filled/36/137413/login-rounded.png" alt="login-rounded"/>
+        </a>
+
+        <a href="help.html" class="btn btn-next">
+          <img width="36" height="36"  src="https://img.icons8.com/ios-filled/36/137413/login-rounded-right.png" alt="login-rounded-right"/>
+        </a>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script type="text/javascript">
+
+    //for the container
+    const sr = ScrollReveal ({
+      distance: '65px',
+      duration: 2600,
+      delay: 450,
+      reset: true
+    });
+
+    sr.reveal('.container', {delay:200, origin:'top'});
+  </script>
+</body>
+</html>

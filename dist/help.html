@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/help.css">
+
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+
+<body>
+  
+  <div class="container">
+    <h1 class="title">What do you want to know?</h1>
+
+    <main class="left"> 
+      <div class="help-img"><img src="assets/img/side-img/help-img.svg" class="left-img"></div> <!--faq-img-->
+
+      <div class="content"> 
+        <div class="question-answer">
+          <div class="question">
+            <h3 class="title-question">What is Garbo Monitoring?</h3>
+            <button class="btn">
+              <span class="up-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-up.png" alt="sort-up"/></span>
+              <span class="down-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-down.png" alt="sort-down"/></span>
+            </button>
+          </div>
+          <div class="answer">
+            <p>Garbo Monitoring is a <strong>garbage collection monitoring and notification system</strong> designed to monitor garbage collection within the urban areas of Iligan City and to also notify the residents of the said city when it is their schedule for garbage collection.</p>
+          </div>
+        </div>
+
+        <div class="question-answer">
+          <div class="question">
+            <h3 class="title-question">What is the main objective of Garbo Monitoring?</h3>
+            <button class="btn">
+              <span class="up-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-up.png" alt="sort-up"/></span>
+              <span class="down-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-down.png" alt="sort-down"/></span>
+            </button>
+          </div>
+          <div class="answer">
+            <p>The main goal of this app is to help the residents of Iligan City locate their respective barangay waste destination points <strong>(B.M.R.F. or pickup points)</strong> and to inform them what specific day(s) of the week their barangay is scheduled for garbage collection. Through this implementation, the developers believe that the residents of Iligan City don't have to burn their trash every other day which can cause health infections and air pollution.</p>
+          </div>
+        </div>
+
+        <div class="question-answer">
+          <div class="question">
+            <h3 class="title-question">Limitations of Garbo Monitoring</h3>
+            <button class="btn">
+              <span class="up-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-up.png" alt="sort-up"/></span>
+              <span class="down-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-down.png" alt="sort-down"/></span>
+            </button>
+          </div>
+          <div class="answer">
+            <p>Garbo Monitoring is still in the development process. Thus, the system is only limited to track five waste destination points as of the moment.</p>
+          </div>
+        </div>
+
+        <div class="question-answer">
+          <div class="question">
+            <h3 class="title-question">Who are the following developers behind Garbo Monitoring?</h3>
+            <button class="btn">
+              <span class="up-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-up.png" alt="sort-up"/></span>
+              <span class="down-icon"><img width="16" height="16" src="https://img.icons8.com/material-rounded/16/137413/sort-down.png" alt="sort-down"/></span>
+            </button>
+          </div>
+          <div class="answer">
+            <p style="font-size: 0.81rem;">The following developers of this app are two 3rd-year college IT students from the Mindanao State University of Iligan Institute of Technology. If you have questions with regards to the usability or recommendations you can suggest for the betterment of the app, feel free to message them on the <a href="contact.html">Contact Us</a> page.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="back-icon">
+      <div class="back">
+        <a href="home.html" class="btn-prev">
+          <img width="36" height="36" src="https://img.icons8.com/ios-filled/36/137413/login-rounded.png" alt="login-rounded"/>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script type="text/javascript">
+
+    const questions = document.querySelectorAll(".question-answer");
+
+    questions.forEach(function(question) {
+        const btn = question.querySelector('.btn');
+        btn.addEventListener("click", function() {
+            questions.forEach(function(item) {
+                if (item !== question) {
+                    item.classList.remove("show-text");
+                }
+            })
+            question.classList.toggle("show-text");
+        })
+    })
+
+    //for the whole box
+    const sr = ScrollReveal ({
+      distance: '65px',
+      duration: 2600,
+      delay: 450,
+      reset: true
+    });
+
+    sr.reveal('.container', {delay:200, origin:'top'});
+    sr.reveal('.help-img', {delay:250, origin:'top'});
+    sr.reveal('.content', {delay:250, origin:'top'});
+  </script>
+</body>
+</html>

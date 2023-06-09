@@ -86,6 +86,21 @@
   
   <script src="https://unpkg.com/scrollreveal"></script>
   <script type="text/javascript">
+
+    const inputs = document.querySelectorAll(".input-field");
+    const main = document.querySelector("main");
+
+    inputs.forEach((inp) => {
+      inp.addEventListener("focus", () => {
+        inp.classList.add("active");
+      });
+      inp.addEventListener("blur", () => {
+        if (inp.value != "") return;
+        inp.classList.remove("active");
+      });
+    });
+
+    //for the whole box
     const sr = ScrollReveal ({
       distance: '65px',
       duration: 2600,

@@ -230,6 +230,7 @@ label {
 }
 
 /*for the barangay style*/
+select,
 .select-menu{
     width: 185px;
     margin: 10px 1px;

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/login.css">
+
+  <script defer src="../bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="../assets/img/logo/logo.png">
+</head>
+
+<body>
+  <div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+      <div class="login">
+        <div class="d-flex justify-content-center">
+          <div class="logo-container">
+            <img src="../assets/img/logo/logo.png" class="logo">
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center form">
+          <form action="">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text" style="padding: 12px;">
+                  <img width="14" height="14" src="https://img.icons8.com/fluency-systems-filled/14/FFFFFF/user.png"/>
+                </span>
+              </div>
+              <input type="email" name="admin_email" id="admin_email" class="form-control input_user" placeholder="email" required="required">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text" style="padding: 12px;">
+                  <img width="14" height="14" src="https://img.icons8.com/ios-glyphs/14/FFFFFF/lock--v1.png" alt="lock--v1"/>
+              </div>
+              <input type="password" name="admin_password" id="admin_password" class="form-control input_user" placeholder="password" required="required">
+            </div>
+
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customControlInline">
+                  <label class="custom-control-label" for="customControlInline">Remember Me</label>
+              </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <input type="submit" name="login" value="Sign In" class="btn login_btn">
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

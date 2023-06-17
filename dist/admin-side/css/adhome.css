@@ -98,7 +98,7 @@ body{
 /*main*/
 .main{
   position: relative;
-  background: white;
+  background: #eaffd0;
   width: 100%;
   padding: 1rem;
 }
@@ -108,8 +108,8 @@ body{
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  background: transparent;
-  border: 1px solid #137413;
+  background: white;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 10px 2rem;
   margin-bottom: 1rem;
@@ -146,7 +146,8 @@ body{
 
 /*first*/
 .first{
-  display: grid; 
+  display: grid;
+  padding: 10px; 
   grid-template-columns: 1fr 1fr;
   width: 100%;
 }
@@ -204,23 +205,30 @@ body{
   border-radius: 12px;
   height: 355px;
   padding: 5px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
 }
 
 /*second*/
 .second{
   position: relative;
+  padding: 10px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  min-height: 350px;
+  min-height: 250px;
 }
 
 .con{
   position: relative;
+  background: white;
+  border: 5px black;
+  border-style: dashed;
   padding: 20px;
   width: 100%;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-  border: 1px solid red;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.calendar{
 }

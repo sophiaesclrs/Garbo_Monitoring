@@ -1,4 +1,4 @@
-//nap starts
+//map starts
 var map = L.map('map').setView([8.2240, 124.2460], 17);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,16 +38,25 @@ function error(err){
 
 // chart starts
 
-const ctx = document.getElementById('myChart');
+const ctx = document.getElementById('myChart').getContext('2d');
 
   new Chart(ctx, {
-    type: 'bar',
+    type: 'polarArea',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: [
+        'Tuesday',
+        'Thursday',
+        'Friday'
+      ],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
+        label: ' Respondents',
+        data: [67, 59, 13],
+        backgroundColor: [
+          'rgb(139, 0, 0)',
+          'rgb(255, 215, 0)',
+          'rgb(0, 100, 0)'
+        ]
+
       }]
     },
     options: {
@@ -56,6 +65,10 @@ const ctx = document.getElementById('myChart');
   });
 
 // chart ends
+
+//calendar starts
+
+//calendar ends
 
 //for the whole box
 const sr = ScrollReveal ({

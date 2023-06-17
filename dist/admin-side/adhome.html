@@ -13,6 +13,11 @@
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
 
+ <!--Make sure you put this AFTER Leaflet's CSS-->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""></script>
+
   <script defer src="../bundle.js"></script>
 
   <title>Garbo Monitoring</title>
@@ -83,40 +88,41 @@
       </div>
     </div>
 
-    <div class="cards">
-      <div class="box box-1">
-        <i class="uil uil-estate"></i>
-        <span class="title">Barangays</span>
-        <span class="total">5</span>
+    <div class="first">
+
+      <div class="one cards">
+        <div class="box box-1">
+          <i class="uil uil-estate"></i>
+          <span class="title">Barangays</span>
+          <span class="total">5</span>
+        </div>
+        <div class="box box2">
+          <i class="uil uil-users-alt"></i>
+          <span class="title">Respondents</span>
+          <span class="total">50,000</span>
+        </div>
       </div>
-      <div class="box box2">
-        <i class="uil uil-users-alt"></i>
-        <span class="title">Respondents</span>
-        <span class="total">50,000</span>
-    </div>
-    </div>
 
-    <div class="map">
-
+      <div class="one map">
+        <div id="map"></div>
+      </div>
     </div>
+    
+    <div class="second">
+      <div class="con calendar"></div>
+      
+      <div class="con chart">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+    
   </div>
 
-  
 
 
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
-  <script type="text/javascript">
-
-    //for the whole box
-    const sr = ScrollReveal ({
-      distance: '65px',
-      duration: 2600,
-      delay: 450,
-      reset: true
-    });
-
-    sr.reveal('.login', {delay:200, origin:'top'});
-  </script>
+  <script src="js/adhome.js"></script>
+  
 </body>
 </html>

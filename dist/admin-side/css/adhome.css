@@ -115,6 +115,7 @@ body{
   margin-bottom: 1rem;
 }
 .header img{
+  margin-left: 20%;
   width: 40px;
   height: 40px;
   cursor: pointer;
@@ -144,7 +145,15 @@ body{
 }
 
 /*first*/
+.first{
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
 .cards{
+  position: relative;
+  width: 220px;
   display: block;
   align-items: center;
   justify-content: center;
@@ -153,11 +162,11 @@ body{
 .box{
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
   align-items: center;
   border-radius: 12px;
-  width: calc(100% / 5 - 15px);
   padding: 15px 20px;
-  margin-bottom: 20px;
+  cursor: pointer;
   background-color: var(--box1-color);
   
 }
@@ -183,3 +192,35 @@ body{
   background-color: var(--box2-color);
 }
 
+.map{
+  position: relative;
+  margin-left: -53%;
+  width: 153%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+}
+#map{
+  border-radius: 12px;
+  height: 355px;
+  padding: 5px;
+}
+
+/*second*/
+.second{
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  min-height: 350px;
+}
+
+.con{
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  border: 1px solid red;
+}

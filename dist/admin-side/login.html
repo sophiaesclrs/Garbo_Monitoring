@@ -25,6 +25,11 @@
           </div>
         </div>
 
+        <div class="greetings">
+          <h2>Welcome Back!</h2>
+          <p>You're about to sign in to the administrator side of the Garbo Monitoring app.</p>
+        </div>
+
         <div class="d-flex justify-content-center form">
           <form action="">
             <div class="input-group mb-3">
@@ -33,7 +38,7 @@
                   <img width="14" height="14" src="https://img.icons8.com/fluency-systems-filled/14/FFFFFF/user.png"/>
                 </span>
               </div>
-              <input type="email" name="admin_email" id="admin_email" class="form-control input_user" placeholder="email" required="required">
+              <input type="email" name="admin_email" id="admin_email" class="form-control input_user" placeholder="Enter your email" required="required">
             </div>
 
             <div class="input-group mb-3">
@@ -41,13 +46,12 @@
                 <span class="input-group-text" style="padding: 12px;">
                   <img width="14" height="14" src="https://img.icons8.com/ios-glyphs/14/FFFFFF/lock--v1.png" alt="lock--v1"/>
               </div>
-              <input type="password" name="admin_password" id="admin_password" class="form-control input_user" placeholder="password" required="required">
+              <input type="password" name="admin_password" id="admin_password" class="form-control input_pass" placeholder="Enter your password" required="required">
             </div>
 
             <div class="form-group">
-              <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customControlInline">
-                  <label class="custom-control-label" for="customControlInline">Remember Me</label>
+              <div class="note">
+                  <p>Note: Your default email and password were already given to you.</p>
               </div>
           </div>
 
@@ -60,5 +64,19 @@
     </div>
   </div>
   </div>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script type="text/javascript">
+
+    //for the whole box
+    const sr = ScrollReveal ({
+      distance: '65px',
+      duration: 2600,
+      delay: 450,
+      reset: true
+    });
+
+    sr.reveal('.login', {delay:200, origin:'top'});
+  </script>
 </body>
 </html>

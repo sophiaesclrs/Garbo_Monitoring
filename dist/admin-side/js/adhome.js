@@ -224,13 +224,3 @@ setInterval(() => {
 }, 1000);
 
 //calendar ends
-
-//for the whole box
-const sr = ScrollReveal ({
-  distance: '65px',
-  duration: 2600,
-  delay: 450,
-  reset: true
-});
-
-sr.reveal('.login', {delay:200, origin:'top'});

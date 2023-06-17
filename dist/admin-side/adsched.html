@@ -5,18 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="css/adhome.css">
+  <link rel="stylesheet" href="css/adsched.css">
 
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-
- <!--Make sure you put this AFTER Leaflet's CSS-->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""></script>
 
   <script defer src="../bundle.js"></script>
 
@@ -35,13 +26,13 @@
     </div>
 
       <ul class="menu">
-        <li class="active">
+        <li>
           <a href="adhome.html" >
             <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-home-puffy.png" alt="experimental-home-puffy"/>
             <span>Home</span>
           </a>
         </li>
-        <li>
+        <li class="active">
           <a href="adsched.html">
             <img width="24" height="24" src="https://img.icons8.com/puffy/24/experimental-calendar-puffy.png" alt="experimental-calendar-puffy"/>
             <span>Schedules</span>
@@ -77,8 +68,8 @@
   <div class="main">
     <div class="header">
       <div class="header-title">
-        <span>Home</span>
-        <h2>Dashboard</h2>
+        <span>Events</span>
+        <h2>Garbage Schedule Every Week</h2>
       </div>
       
       <div class="user">
@@ -88,78 +79,82 @@
       </div>
     </div>
 
-    <div class="first">
+    <div class="content">
+      <h3 class="year">2023</h3>
 
-      <div class="one cards">
-        <div class="box box-1">
-          <i class="uil uil-estate"></i>
-          <span class="title">Barangays</span>
-          <span class="total">5</span>
+      <div class="event">
+        <div class="event-left">
+          <div class="event-day">
+            <div class="day">Tue</div>
+          </div>
         </div>
-        <div class="box box2">
-          <i class="uil uil-users-alt"></i>
-          <span class="title">Respondents</span>
-          <span class="total">50,000</span>
+
+        <div class="event-right">
+          <h3 class="event-title">Hey there, admin!</h3>
+
+          <div class="note">Reminder:</div>
+          <div class="event-description">
+            Brgy. <strong>Del Carmen</strong>, Brgy. <strong>Saray</strong>, Brgy. <strong>Tominobo Proper</strong>, and Brgy. <strong>Ubaldo Laya</strong> are the four scheduled barangays that should be visited every <strong>Tuesday of the week</strong> for garbage collection.
+          </div>
+
+          <div class="event-timing">
+            <i class="uil uil-bell"></i>
+            <p>starting @ 7:30 am</p>
+          </div>
         </div>
       </div>
 
-      <div class="one map">
-        <div id="map"></div>
+      <div class="event">
+        <div class="event-left box2">
+          <div class="event-day">
+            <div class="day">Thu</div>
+          </div>
+        </div>
+
+        <div class="event-right">
+          <h3 class="event-title">Hey there, admin!</h3>
+
+          <div class="note">Reminder:</div>
+          <div class="event-description">
+            Brgy. <strong>Bagong Silang</strong> and Brgy. <strong>Del Carmen</strong> are the two scheduled barangays that should be visited every <strong>Thursday of the week</strong> for garbage collection.
+          </div>
+
+          <div class="event-timing">
+            <i class="uil uil-bell"></i>
+            <p>starting @ 8:30 am</p>
+          </div>
+        </div>
       </div>
+
+      <div class="event">
+        <div class="event-left box3">
+          <div class="event-day">
+            <div class="day">Fri</div>
+          </div>
+        </div>
+
+        <div class="event-right">
+          <h3 class="event-title">Hey there, admin!</h3>
+
+          <div class="note">Reminder:</div>
+          <div class="event-description">
+            Brgy. <strong>Saray</strong> and Brgy. <strong>Tominobo Proper</strong> are the two scheduled barangays that should be visited every <strong>Friday of the week</strong> for garbage collection.
+          </div>
+
+          <div class="event-timing">
+            <i class="uil uil-bell"></i>
+            <p>starting @ 9:30 am</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-    
-    <div class="second">
-      <div class="con calendar">
-        <div class="cal">
-          <div class="calendar-header">
-            <span class="month-picker" id="month-picker">June</span>
-            <div class="year-picker" id="year-picker">
-              <span class="year-change" id="pre-year">
-                <pre><</pre> <!--prev arrow-->
-              </span>
-              <span id="year">2023</span>
-              <span class="year-change" id="next-year">
-                <pre>></pre> <!--next arrow-->
-              </span>
-            </div>
-          </div>
-
-          <div class="calendar-body">
-            <div class="calendar-week-days">
-              <div>Sun</div>
-              <div>Mon</div>
-              <div>Tue</div>
-              <div>Wed</div>
-              <div>Thu</div>
-              <div>Fri</div>
-              <div>Sat</div>
-            </div>
-            <div class="calendar-days">
-            </div>
-          </div>
-          <div class="calendar-footer"></div>
-
-          <div class="date-time-formate">
-            <div class="day-text-formate">TODAY</div>
-            <div class="date-time-value">
-              <div class="time-formate">05:11:19</div>
-              <div class="date-formate">June 17, 2023</div>
-            </div>
-          </div>
-          <div class="month-list"></div>
-        </div>
-      </div>
-      
-      <div class="con chart">
-        <canvas id="myChart"></canvas>
-      </div>
-    </div>
-    
   </div>
 
 
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
   <script src="js/adhome.js"></script>
   
 </body>

@@ -148,107 +148,16 @@ body{
 }
 
 /*content*/
-:root{
-  --color1: #61e529;
-  --color2: #24ae24;
-  --color3: #008000;
-}
-
-
-.content{
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.year{
-  font-family: 'Raleway', sans-serif;
-  font-size: 40px;
-  color: #137413;
-  text-align: center;
-  padding: 20px 0;
-  border-bottom: 5px dashed #137413;
-}
-
-.event{
-  box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.4);
-  display: flex;
-  border-radius: 8px;
-  margin: 32px 0;
-  transition: all 0.55s ease;
-}
-.event:hover{
-  transform: scale(1.1);
-}
-
-.event-left {
-  background: var(--color1);
-  max-width: 130px;
+.container{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 48px;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 12px 0 0 12px;
+  padding: 10px;
 }
 
-.box2{ background: var(--color2); }
-.box3{ background: var(--color3); }
-
-.day{ 
-  font-size: 30px; 
-  font-family: 'Offside', cursive; 
-}
-
-.event-right {
-  display: flex;
-  background: white;
-  border-radius: 0 12px 12px;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 24px;
-}
-
-.event-title {
-  font-size: 24px;
-  margin: 24px 0 10px 0;
-  margin-bottom: 3%;
-}
-
-.note{
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 1.5%;
-  letter-spacing: 2px;
-  padding: 2px;
-}
-
-.event-description{
-  font-size: 15px;
-  text-align: justify;
-}
-
-.event-right .event-timing {
-  background: #77dd77;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  padding: 8px;
-  border-radius: 16px;
-  margin: 24px 0;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.event-timing i{
-  font-size: 20px;
-  font-weight: 600;
-  color: black;
-  margin-right: 5%;
-}
-.event-timing p{
-  font-family: 'Amatic SC', cursive;
-  font-size: 20px;
-  font-weight: 600;
+#map{
+  width: 100%;
+  border-radius: 12px;
+  height: 483px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.3);
 }

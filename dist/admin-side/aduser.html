@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="css/adhome.css">
+  <link rel="stylesheet" href="css/aduser.css">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
@@ -81,8 +81,7 @@
       </div>
     </div>
 
-    <div class="first">
-
+    <div class="container">
       
     </div>
   </div>
@@ -91,7 +90,16 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-  <script src="js/adhome.js"></script>
+  <script src="js/datatables.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Datatables Responsive
+			$("#datatables-reponsive").DataTable({
+				responsive: true
+			});
+		});
+	</script>
   
 </body>
 </html>

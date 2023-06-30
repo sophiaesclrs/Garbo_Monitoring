@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/logreg.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+<body>
+
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="form-wrap">
+
+          <form action="#" autocomplete="off" class="signup">
+            
+            <div class="logo">
+              <img src="assets/img/logo/logo.png"/>
+              <h4>Garbo Monitoring</h4>
+            </div>
+
+            <div class="head">
+              <h2>Get Started</h2>
+              <h6>Already a member?</h6>
+              <a href="signin.html" class="toggle">Click Me to Sign In</a>
+            </div>
+
+            <div class="actual-form">
+
+              <div class="inputrow">
+                <div class="inputgroup" >
+                  <signage class="subhead">Fullname</signage>
+                  <input type="text" id="name" required="required">
+                </div>
+                <div class="inputgroup" >
+                  <signage class="subhead">Phone Number</signage>
+                  <input type="number" id="contact" required="required">
+                </div>
+              </div>
+
+              <signage class="title">Address</signage><br>
+
+              <!--daeeee ana sa ang style niya ha akoa sa tun-an unsaon pagstyle ang select-->
+              <div class="inputrow">
+                <select class="inputgroup select" id="barangay">
+          
+                  <ul class="options" style="position: absolute;font-size: 0.75em;">
+
+                    <option selected disabled>Barangay</option>
+
+                      <option class="option" required="required">
+                        <img width="16" height="16" src="https://img.icons8.com/sf-black-filled/16/137413/home.png" alt="home"/>
+                          <span class="option-text">Bagong Silang</span> <!--Schedule: Thursday-->
+                      </option>
+                      <option class="option">
+                        <img width="16" height="16" src="https://img.icons8.com/sf-black-filled/16/137413/home.png" alt="home"/>
+                          <span class="option-text">Del Carmen</span> <!--Schedule: Thursday and Tuesday-->
+                      </option>
+                      <option class="option">
+                        <img width="16" height="16" src="https://img.icons8.com/sf-black-filled/16/137413/home.png" alt="home"/>
+                          <span class="option-text">Saray</span> <!--Schedule: Tuesday and Friday-->
+                      </option>
+
+                      <option class="option">
+                        <img width="16" height="16" src="https://img.icons8.com/sf-black-filled/16/137413/home.png" alt="home"/>
+                          <span class="option-text">Tominobo Proper</span> <!--Schedule: Tuesday and Friday-->
+                      </option>
+
+                      <option class="option">
+                        <img width="16" height="16" src="https://img.icons8.com/sf-black-filled/16/137413/home.png" alt="home"/>
+                          <span class="option-text">Ubaldo Laya</span> <!--Schedule: Tuesday-->
+                      </option>
+                  </ul>
+                </select>
+                
+                <div class="input select-menu">
+                  <div class="select-btn">
+                    <input type="text" id="purok" placeholder="Purok" required="required">
+                  </div>
+                </div>
+              </div>
+
+              <div class="white-space"> </div>
+
+              <p class="brgy-text">
+                 <strong style="color: #333;">NOTE:</strong> As of the moment, the system is limited to five barangays only.
+              </p>
+
+              <div class="inputrow">
+
+                <div class="inputgroup" >
+                  <signage class="subhead">Email</signage>
+                  <input type="email" id="email" required="required">
+                </div>
+                <div class="inputgroup" >
+                  <signage class="subhead">Password</signage>
+                  <input type="password" id="password" required="required">
+                </div>
+              </div>
+
+              <input type="button" id="sign-up" value="Sign Up" class="sign-btn" />
+
+              <!--<p class="text">
+                By signing up, I agree to the
+                <a href="#">Terms of Services</a> and
+                <a href="#">Privacy Policy</a>
+              </p>-->
+            </div>
+          </form>
+        </div>
+
+        <div class="carousel">
+          <div class="img-wrapper">
+            <img src="assets/img/logo/logo-header.png" class="image img-1 show"/>
+          </div>
+
+          <div class="text-slider">
+            <div class="text-wrap">
+              <div class="text-group">
+              </div>
+            </div>
+
+            <div class="bullets">
+              <span class="active" data-value="1"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/logreg.js"></script>
+</body>
+</html>
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-analytics.js";
+  import { getAuth, updateProfile, createUserWithEmailAndPassword, OAuthProvider, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+  import { getFirestore, connectFirestoreEmulator, addDoc, doc,setDoc, collection } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
+  
+  
+    const firebaseConfig = {
+    apiKey: "AIzaSyBAO-FP4MGApI231xr9bVDZIzsXPPGoVkM",
+    authDomain: "casestudy2-f35ed.firebaseapp.com",
+    projectId: "casestudy2-f35ed",
+    storageBucket: "casestudy2-f35ed.appspot.com",
+    messagingSenderId: "1047601609844",
+    appId: "1:1047601609844:web:55b8874e5ccf521466a521",
+    measurementId: "G-9XV7B6DX8J"
+    };
+
+          
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const db = getFirestore();
+    const providerGoogle = new GoogleAuthProvider(app);
+    const providerFB = new FacebookAuthProvider(app);
+    const providerGithub = new GithubAuthProvider(app);
+    const providerMS = new OAuthProvider('microsoft.com');
+    
+    
+    //AUTHENTICATION
+    document.getElementById("sign-up").addEventListener("click", async function() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var contact = document.getElementById("contact").value
+      var username = document.getElementById("name").value;
+      var address = document.getElementById("barangay").value;
+      var purok = document.getElementById("purok").value;
+      var profilePhoto = document.getElementById("profile-photo");
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        var photoURL = user.photoURL;
+
+        await updateProfile(user, {
+          displayName: username,
+          email: email,
+          photoURL: photoURL
+        });
+
+    
+
+        console.log(user);
+        const userRef = doc(db, "users", user.uid);
+        await setDoc(userRef, {
+          name: username,
+          email: email,
+          address: address,
+          purok: purok,
+          contact: contact
+        });
+
+        alert("Registration successful!!");
+        window.location.href = "signin.html";
+      } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        alert(errorMessage);
+      }
+    });
+
+
+
+  </script>
+
+  

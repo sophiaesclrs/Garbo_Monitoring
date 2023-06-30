@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/schedule.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+<body>
+
+  <header>
+
+    <a href="home.html" class="brand">Garbo Monitoring</a>
+
+    <div class="menu-btn"></div>
+
+      <div class="navigation">
+        <div class="navigation-items">
+          <a href="home.html">Home</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="location.html">Location</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+
+      <img src="assets/img/utilities/user.png" class="user" onclick="toggleMenu()">
+
+      <div class="sub-menu-wrap" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <img src="assets/img/utilities/iuser.png">
+            <h3 id="displayName">J</h3>
+          </div>
+          <hr>
+
+          <a href="user_page.html" class="sub-menu-link">
+            <img src="assets/img/utilities/profile.png">
+            <p>Edit Profile</p>
+            <span>></span>
+          </a>
+
+          <a href="settings.html" class="sub-menu-link">
+            <img src="assets/img/utilities/settings.png">
+            <p>Settings & Privacy</p>
+            <span>></span>
+          </a>
+
+          <a href="help.html" class="sub-menu-link">
+            <img src="assets/img/utilities/help.png">
+            <p>Help & Support</p>
+            <span>></span>
+          </a>
+
+          <a id="logout" class="sub-menu-link">
+            <img src="assets/img/utilities/logout.png">
+            <p>Logout</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+  </header>
+
+  <section class="sched" id="sched">
+
+    <div class="content">
+      <div class="left">
+        <div class="calendar">
+          <div class="month">
+            <i class="fas fa-angle-left prev"></i>
+            <div class="date">may 2023</div>
+            <i class="fas fa-angle-right next"></i>
+          </div>
+          <div class="weekdays">
+            <div>Sun</div>
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+          </div>
+
+          <div class="days"></div>
+
+          <div class="goto-today">
+            <div class="goto">
+              <input type="text" placeholder="mm/yyyy" class="date-input" />
+              <button class="goto-btn">Go</button>
+            </div>
+            <button class="today-btn">Today</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+
+          <div class="schedule">
+            <h5>
+              <strong>:</strong> According to the address you registered, your garbage schedule is every <span id="date"></span> of the week.
+            </h5>
+
+            <!--
+              According to the address you registered, your garbage schedule is every <span>Tuesday</span> and <span>Friday</span> of the week. -> daeee to those barangays who has two schedules
+            -->
+          </div>
+
+        <div class="today-date">
+          <div class="event-day">wed</div>
+          <div class="event-date">may 31, 2023</div>
+        </div>
+
+        <div class="events"></div>
+
+        <div class="add-event-wrapper">
+          <div class="add-event-header">
+            <div class="title">Add Event</div>
+            <i class="fas fa-times close"></i>
+          </div>
+          <div class="add-event-body">
+            <div class="add-event-input">
+              <input type="text" placeholder="Event Name" class="event-name" />
+            </div>
+            <div class="add-event-input">
+              <input
+                type="text"
+                placeholder="Event Time From"
+                class="event-time-from"
+              />
+            </div>
+            <div class="add-event-input">
+              <input
+                type="text"
+                placeholder="Event Time To"
+                class="event-time-to"
+              />
+            </div>
+          </div>
+          <div class="add-event-footer">
+            <button class="add-event-btn">Add Event</button>
+          </div>
+        </div>
+
+      </div>
+      <button class="add-event">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+    
+  </section>
+
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="./js/schedule.js"></script>
+  
+</body>
+</html>
+
+
+<script type="module">  
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+  import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+  import { connectFirestoreEmulator, orderBy, limit, getFirestore, setDoc, addDoc, doc, updateDoc,deleteDoc, getDoc, query, collection, where, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
+  
+  
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAO-FP4MGApI231xr9bVDZIzsXPPGoVkM",
+    authDomain: "casestudy2-f35ed.firebaseapp.com",
+    projectId: "casestudy2-f35ed",
+    storageBucket: "casestudy2-f35ed.appspot.com",
+    messagingSenderId: "1047601609844",
+    appId: "1:1047601609844:web:55b8874e5ccf521466a521",
+    measurementId: "G-9XV7B6DX8J"
+};
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const db = getFirestore();
+  console.log(app);
+
+
+//-----------------------------------------------------Profile username and Profile Photo
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("Authenticated user:", user);
+    const displayName = user.displayName;
+    const displayNameElement = document.getElementById("displayName");
+    displayNameElement.textContent = displayName;
+
+    // Check if the user has a profile photo URL
+    if (user.photoURL) {
+      const profilePhotoElement = document.querySelectorAll("#profile-photo");
+      profilePhotoElement.forEach((element) => {
+        element.src = user.photoURL;
+      });
+    }
+  } else {
+    console.log("User is not authenticated");
+  }
+});
+
+
+//----------------------------------------------------Logout
+document.getElementById("logout").addEventListener("click", function() {
+      signOut(auth).then(() => {
+        alert('Thank you for using our app. Goodbye for now!');
+        document.getElementById('logout').style.display = 'none';
+        window.location.href = "index.html";
+  
+      }).catch((error) => {
+        console.log(error);
+      });		  		  
+    });
+
+
+
+//-----------------------------------------------------Schedule calendar
+document.addEventListener('DOMContentLoaded', () => {
+  const collectionRef = collection(db, 'users');
+  const queryRef = query(collectionRef);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const userId = user.uid;
+      console.log(user);
+
+      const docRef = doc(collectionRef, userId);
+      getDoc(docRef)
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.data();
+            const address = userData.address;
+            console.log("Fetched address:", address);
+
+            const dateElement = document.getElementById("date");
+
+            if (address === 'Bagong Silang') {
+              dateElement.textContent = "Thursday";
+            } else if (address === 'Del Carmen') {
+              dateElement.textContent = "Thursday and Tuesday";
+            } else if (address === 'Tominobo Proper') {
+              dateElement.textContent = "Tuesday and Friday";
+            } else if (address === 'Saray') {
+              dateElement.textContent = "Tuesday and Friday";
+            } else if (address === 'Ubaldo Laya') {
+              dateElement.textContent = "Tuesday";
+            } else {
+              console.log("Invalid address:", address);
+            }
+          } else {
+            console.log("Snapshot does not exist");
+          }
+        })
+        .catch((error) => {
+          console.log("Error fetching user data:", error);
+        });
+    } else {
+      // User is not logged in
+    }
+  });
+});
+
+
+
+
+
+    </script>

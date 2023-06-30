@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/logreg.css">
+
+  <script defer src="./bundle.js"></script>
+
+  <title>Garbo Monitoring</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
+</head>
+
+<body>
+
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="form-wrap">
+          <form action="#" autocomplete="off" class="login">
+
+            <div class="logo">
+              <img src="assets/img/logo/logo.png">
+              <h4>Garbo Monitoring</h4>
+            </div>
+            
+            <div class="heading">
+              <h2>Hey there!</h2>
+              <h6>New here?</h6>
+              <a href="signup.html" class="toggle">Click Me to Sign Up</a>
+            </div>
+
+            <div class="actual-form">
+
+              <div class="input-wrap">
+                <input type="email" minlength="4"
+                class="input-field"
+                id="email"
+                autocomplete="off"
+                required="required">
+                <label>Email</label>
+              </div>
+
+              <div class="input-wrap">
+                <input
+                  type="password"
+                  id="password"
+                  minlength="4"
+                  class="input-field"
+                  autocomplete="off"
+                  required="required"
+                />
+                <label>Password</label>
+              </div>
+
+              <input type="button" id="sign-in" value="Sign In" class="sign-btn"/>
+
+              <p class="text">
+                Forgot your password?
+                <a href="assets/utilities/forgot-pass/fp.html">Get help</a> signing in
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div class="carousel">
+          <div class="img-wrapper">
+            <img src="assets/img/logo/logo-header.png" class="image img-1 show"/>
+          </div>
+
+          <div class="text-slider">
+            <div class="bullets">
+              <span class="active" data-value="1"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script type="text/javascript">
+
+    const inputs = document.querySelectorAll(".input-field");
+    const main = document.querySelector("main");
+
+    inputs.forEach((inp) => {
+      inp.addEventListener("focus", () => {
+        inp.classList.add("active");
+      });
+      inp.addEventListener("blur", () => {
+        if (inp.value != "") return;
+        inp.classList.remove("active");
+      });
+    });
+
+    //for the whole box
+    const sr = ScrollReveal ({
+      distance: '65px',
+      duration: 2600,
+      delay: 450,
+      reset: true
+    });
+
+    sr.reveal('.box', {delay:200, origin:'top'});
+    sr.reveal('.form-wrap', {delay:250, origin:'top'});
+    sr.reveal('.carousel', {delay:250, origin:'top'});
+  </script>
+  
+</body>
+</html>
+
+<script type="module">
+  
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-analytics.js";
+  import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, OAuthProvider, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc, connectFirestoreEmulator } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
+  
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAO-FP4MGApI231xr9bVDZIzsXPPGoVkM",
+    authDomain: "casestudy2-f35ed.firebaseapp.com",
+    projectId: "casestudy2-f35ed",
+    storageBucket: "casestudy2-f35ed.appspot.com",
+    messagingSenderId: "1047601609844",
+    appId: "1:1047601609844:web:55b8874e5ccf521466a521",
+    measurementId: "G-9XV7B6DX8J"
+};
+
+// Initialize Firebase
+          
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  const db = getFirestore();
+  const providerGoogle = new GoogleAuthProvider(app);
+  const providerFB = new FacebookAuthProvider(app);
+  const providerGithub = new GithubAuthProvider(app);
+  const providerMS = new OAuthProvider('microsoft.com');
+  connectFirestoreEmulator(db, 'localhost', 8080);
+  
+        
+  document.getElementById("sign-in").addEventListener("click", function() {
+          var email =  document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+        
+          signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user);
+            alert("Hi " +user.email+". Welcome back!");
+            window.location.href = "home.html";
+  })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            alert(errorMessage);
+          });		  		  
+        });
+
+        </script>

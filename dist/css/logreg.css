@@ -77,6 +77,8 @@ form {
 .logo h4 {
   font-size: 0.9rem;
   margin-top: -3px;
+  text-transform: uppercase;
+  font-weight: bold;
   letter-spacing: -0.5px;
   color: #151111;
 }
@@ -139,7 +141,7 @@ form {
   outline: none;
   border-bottom: 1px solid #bbb;
   padding: 0;
-  font-size: 0.7rem;
+  font-size: 1rem;
   color: #137413;
   transition: 0.4s;
 }
@@ -442,7 +444,7 @@ select,
     height: auto;
   }
 
-  form {
+  .signup .login {
     max-width: revert;
     padding: 1.5rem 2.5rem 2rem;
     transition: transform 0.8s ease-in-out, opacity 0.45s linear;
@@ -452,15 +454,15 @@ select,
     margin: 2rem 0;
   }
 
-  form.signup{
+  .signup{
     transform: translateX(100%);
   }
 
-  main.signup-mode form.login{
+  main.signup-mode .login{
     transform: translateX(-100%);
   }
 
-  main.signup-mode form.signup{
+  main.signup-mode .signup{
     transform: translateX(0%);
   }
 

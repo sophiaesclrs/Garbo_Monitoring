@@ -28,7 +28,7 @@ section{
   width: 146%;
 }
 .index-text h5{
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   color: #001300;
   margin-bottom: 20px;
@@ -37,8 +37,9 @@ section{
 }
 .index-text h1{
   font-size: 60px;
+  text-transform: uppercase;
   line-height: 1;
-  color: #001300;
+  color: black;
   margin: 0 0 12px;
 }
 .index-text h4{
@@ -74,7 +75,6 @@ section{
   border-radius: 6px;
   text-transform: uppercase;
   transition: 0.5s ease;
-  margin-left: 2%;
 }
 .index-text a:hover{
   background: black;
@@ -89,7 +89,7 @@ section{
 .icons i{
   display: block;
   margin: 26px 0;
-  font-size: 24px;
+  font-size: 28px;
   color: white;
   transition: all .50s ease;
 }

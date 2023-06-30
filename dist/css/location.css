@@ -70,6 +70,7 @@ header{
   display: flex;
   font-size: 0.8rem;
   align-items: center;
+  cursor: pointer;
   text-decoration: none;
   color: #137413;
   margin: 12px 0;
@@ -154,7 +155,6 @@ section{
 }
 
 .location{ 
-  position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -165,10 +165,10 @@ section{
 }
 
 .location .content{
-  position: relative;
+  position: absolute;
   z-index: 888;
-  width: 100%;
-  margin-top: -160px;
+  width: 950px;
+  margin-top: 60px;
   display: flex;
   border-radius: 10px;
   padding: 5px;
@@ -176,26 +176,24 @@ section{
 }
 
 .content .instruction{
-  position: fixed ;
+  position: absolute;
+  top: 2%;
   padding: 5px;
-  border: none;
-  width: 66.8%;
+  width: 100%;
 }
 .instruction p{
   color: #001300;
-  padding: 5px;
   font-size: 10px;
   text-align: justify;
 }
 
 .map{
   position: relative;
-  margin-top: 55px;
-  margin-left: 1%;
-  width: 812px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
-  border: 1px solid red;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+ 
 }
 
 @media (max-width: 1040px) {

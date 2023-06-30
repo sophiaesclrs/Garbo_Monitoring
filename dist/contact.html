@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
   <script defer src="./bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/nodemailer@6.6.2/dist/nodemailer.min.js"></script>
+
 
   <title>Garbo Monitoring</title>
   <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
@@ -36,7 +38,7 @@
         <div class="sub-menu">
           <div class="user-info">
             <img src="assets/img/utilities/iuser.png">
-            <h3>Juan Dela Cruz</h3>
+            <h3 id="displayName"></h3>
           </div>
           <hr>
 
@@ -58,7 +60,7 @@
             <span>></span>
           </a>
 
-          <a href="" class="sub-menu-link">
+          <a id="logout" class="sub-menu-link">
             <img src="assets/img/utilities/logout.png">
             <p>Logout</p>
             <span>></span>
@@ -99,29 +101,29 @@
         </div>
       </div>
 
-      <div class="contactForm">
-        <form>
+      <div class="contactForm" id="conctactForm">
+        
           <h2>Send your Concerns</h2>
 
           <div class="inputBox">
-            <input type="text" required="required">
+            <input type="text" id="name" required="required">
             <span>Full Name</span>
           </div>
 
           <div class="inputBox">
-            <input type="text" required="required">
+            <input type="text" id="address" required="required">
             <span>Address</span>
           </div>
           
           <div class="inputBox">
-            <textarea required="required"></textarea>
+            <textarea id="message" required="required"></textarea>
             <span>Type your message here...</span>
           </div>
 
           <div class="inputBox">
-            <input type="submit" value="send">
+            <input type="submit" id="sendEmail" >
           </div>
-        </form>
+     
       </div>
     </div>
   </section>
@@ -131,3 +133,88 @@
   
 </body>
 </html>
+
+<script type="module">  
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+  import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+  import { connectFirestoreEmulator, orderBy, limit, getFirestore, setDoc, addDoc, doc, updateDoc, deleteDoc, getDoc, query, collection, where, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
+  
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAO-FP4MGApI231xr9bVDZIzsXPPGoVkM",
+    authDomain: "casestudy2-f35ed.firebaseapp.com",
+    projectId: "casestudy2-f35ed",
+    storageBucket: "casestudy2-f35ed.appspot.com",
+    messagingSenderId: "1047601609844",
+    appId: "1:1047601609844:web:55b8874e5ccf521466a521",
+    measurementId: "G-9XV7B6DX8J"
+    };
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const db = getFirestore();
+  console.log(app);
+
+
+//-----------------------------------------------------Profile username and Profile Photo
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("Authenticated user:", user);
+    const displayName = user.displayName;
+    const displayNameElement = document.getElementById("displayName");
+    displayNameElement.textContent = displayName;
+
+    // Check if the user has a profile photo URL
+    if (user.photoURL) {
+      const profilePhotoElement = document.querySelectorAll("#profile-photo");
+      profilePhotoElement.forEach((element) => {
+        element.src = user.photoURL;
+      });
+    }
+  } else {
+    console.log("User is not authenticated");
+  }
+});
+
+
+
+//----------------------------------------------------Logout
+document.getElementById("logout").addEventListener("click", function() {
+      signOut(auth).then(() => {
+        alert('Thank you for using our app. Goodbye for now!');
+        document.getElementById('logout').style.display = 'none';
+        window.location.href = "index.html";
+  
+      }).catch((error) => {
+        console.log(error);
+      });		  		  
+    });
+
+
+// --------------------------------------------------- Add concernes to Firestore
+document.getElementById("sendEmail").addEventListener("click", async function() {
+  var name = document.getElementById("name").value;
+  var address = document.getElementById("address").value;
+  var message = document.getElementById("message").value;
+
+  try {
+    const collectionReff = collection(db, "concern");
+    const newUser = await addDoc(collectionReff, {
+      name: name,
+      address: address,
+      message: message
+    });
+    console.log(`Created new user: ${newUser.id}`);
+  } catch (error) {
+    console.log("Error adding document:", error.message);
+  }
+});
+
+
+
+
+
+    </script>

@@ -35,7 +35,7 @@
         <div class="sub-menu">
           <div class="user-info">
             <img src="assets/img/utilities/iuser.png">
-            <h3>Juan Dela Cruz</h3>
+            <h3 id="displayName"></h3>
           </div>
           <hr>
 
@@ -57,7 +57,7 @@
             <span>></span>
           </a>
 
-          <a href="" class="sub-menu-link">
+          <a id="logout" class="sub-menu-link">
             <img src="assets/img/utilities/logout.png">
             <p>Logout</p>
             <span>></span>
@@ -69,29 +69,29 @@
   <section class="home" id="home">
 
     <img src="assets/img/bg/1.jpg" class="image active" cover no-repeat>
-    <img src="assets/img/bg/2.jpg" class="image" cover no-repeat>
+    <img src="assets/img/bg/2.1.jpg" class="image" cover no-repeat>
     <img src="assets/img/bg/3.jpg" class="image" cover no-repeat>
     <img src="assets/img/bg/4.jpg" class="image" cover no-repeat>
 
     <div class="content active">
       <h1>hello.<br><span>iliganons</span></h1>
-      <p>Thank you for using the <strong style="color: black;">Garbo Monitoring</strong> app. <strong style="color: black;">Garbo Monitoring</strong> helps you keep updated about the garbage collection schedules in your respective barangays.</p>
+      <p>Thank you for using the <strong style="color: black; text-transform: uppercase;">Garbo Monitoring</strong> app. <strong style="color: black; text-transform: uppercase;">Garbo Monitoring</strong> helps you keep updated about the garbage collection schedules in your respective barangays.</p>
     </div>
     <div class="content">
       <h1>waste.<br><span>destination</h1>
-      <p>Since most garbage collectors won't pick up waste in secluded areas, residents can now put their trash in their respective waste destination points as this app locates their barangay waste destinations accordingly.</p>
+      <p>Since it is seldom that garbage pickers will collect waste in <strong style="color: black; text-transform: uppercase;">secluded areas,</strong> <strong style="color: black; text-transform: uppercase;">garbo monitoring</strong> can assist you in locating your barangay waste destination point in no time!</p>
       <a href="location.html">Explore</a>
     </div>
 
     <div class="content">
       <h1>keep.<br><span>updated</span></h1>
-      <p>Moreover, you don't need to plot your garbage collection schedules manually, as it is already plotted in the app.</p>
+      <p>Moreover, you <strong style="color: black;text-transform: uppercase;">don't need to plot</strong> your garbage collection schedules manually, as it is already plotted in the app.</p>
       <a href="schedule.html">Explore</a>
     </div>
 
     <div class="content">
       <h1>daily.<br><span>reminder</span></h1>
-      <p>Through using this app, missed garbage collection schedule is not a problem no more! We keep you updated by sending you an SMS blast when it's your barangay's turn for garbage collection.</p>
+      <p>Through using this app, missed garbage collection schedule is not a problem no more! We keep you updated by sending you an <strong style="color: black; text-transform: uppercase;">SMS blast</strong> when it's your barangay's turn for garbage collection.</p>
 
       <div class="button">
         <a href="">We'll keep you posted!</a>
@@ -100,9 +100,9 @@
     </div>
 
     <div class="media-icons">
-      <a href=""><i class="fa-brands fa-facebook"></i></a>
-      <a href=""><i class="fa-brands fa-instagram"></i></a>
-      <a href=""><i class="fa-brands fa-twitter"></i></a>
+      <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a>
     </div>
 
     <div class="slider-navigation">
@@ -118,3 +118,64 @@
 
 </body>
 </html>
+
+<script type="module">  
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+  import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+  import { connectFirestoreEmulator, orderBy, limit, getFirestore, setDoc, addDoc, doc, updateDoc,deleteDoc, getDoc, query, collection, where, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
+  
+  
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAO-FP4MGApI231xr9bVDZIzsXPPGoVkM",
+    authDomain: "casestudy2-f35ed.firebaseapp.com",
+    projectId: "casestudy2-f35ed",
+    storageBucket: "casestudy2-f35ed.appspot.com",
+    messagingSenderId: "1047601609844",
+    appId: "1:1047601609844:web:55b8874e5ccf521466a521",
+    measurementId: "G-9XV7B6DX8J"
+};
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const db = getFirestore();
+  console.log(app);
+
+
+//-----------------------------------------------------Profile username and Profile Photo
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("Authenticated user:", user);
+    const displayName = user.displayName;
+    const displayNameElement = document.getElementById("displayName");
+    displayNameElement.textContent = displayName;
+
+    // Check if the user has a profile photo URL
+    if (user.photoURL) {
+      const profilePhotoElement = document.querySelectorAll("#profile-photo");
+      profilePhotoElement.forEach((element) => {
+        element.src = user.photoURL;
+      });
+    }
+  } else {
+    console.log("User is not authenticated");
+  }
+});
+
+
+//----------------------------------------------------Logout
+document.getElementById("logout").addEventListener("click", function() {
+      signOut(auth).then(() => {
+        alert('Thank you for using our app. Goodbye for now!');
+        document.getElementById('logout').style.display = 'none';
+        window.location.href = "index.html";
+  
+      }).catch((error) => {
+        console.log(error);
+      });		  		  
+    });
+
+
+    </script>

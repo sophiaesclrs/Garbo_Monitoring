@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/location.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
   <script defer src="./bundle.js"></script>
 
   <title>Garbo Monitoring</title>
@@ -35,7 +39,7 @@
         <div class="sub-menu">
           <div class="user-info">
             <img src="assets/img/utilities/iuser.png">
-            <h3>Juan Dela Cruz</h3>
+            <h3 id="displayName"></h3>
           </div>
           <hr>
 
@@ -57,7 +61,7 @@
             <span>></span>
           </a>
 
-          <a href="" class="sub-menu-link">
+          <a id="logout" class="sub-menu-link">
             <img src="assets/img/utilities/logout.png">
             <p>Logout</p>
             <span>></span>
@@ -72,7 +76,8 @@
         <p><strong>NOTE:</strong> According to the address you have registered in the system, this is where you'll find your <strong>barangay's waste destination point</strong>. Please follow the pin shown below.</p>
       </div>
 
-      <div class="map">
+      <div class="map" id="map" style=" width: 100%; 
+      height: 500px;">
         <!--daeee dnhi ibutang ang map...-->
       </div>
     </div>
@@ -82,3 +87,194 @@
   <script src="./js/location.js"></script>
 </body>
 </html>
+
+
+<script type="module">  
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+  import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+  import { connectFirestoreEmulator, orderBy, limit, getFirestore, setDoc, addDoc, doc, updateDoc,deleteDoc, getDoc, query, collection, where, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-firestore.js";
+
+  
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBAO-FP4MGApI231xr9bVDZIzsXPPGoVkM",
+    authDomain: "casestudy2-f35ed.firebaseapp.com",
+    projectId: "casestudy2-f35ed",
+    storageBucket: "casestudy2-f35ed.appspot.com",
+    messagingSenderId: "1047601609844",
+    appId: "1:1047601609844:web:55b8874e5ccf521466a521",
+    measurementId: "G-9XV7B6DX8J"
+};
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const db = getFirestore();
+  console.log(app);
+
+
+//-----------------------------------------------------Profile username and DP
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("Authenticated user:", user);
+    const displayName = user.displayName;
+    const displayNameElement = document.getElementById("displayName");
+    displayNameElement.textContent = displayName;
+
+    // Check if the user has a profile photo URL
+    if (user.photoURL) {
+      const profilePhotoElement = document.querySelectorAll("#profile-photo");
+      profilePhotoElement.forEach((element) => {
+        element.src = user.photoURL;
+      });
+    }
+  } else {
+    console.log("User is not authenticated");
+  }
+});
+
+
+
+//----------------------------------------------------Logout
+document.getElementById("logout").addEventListener("click", function() {
+      signOut(auth).then(() => {
+        alert('Thank you for using our app. Goodbye for now!');
+        document.getElementById('logout').style.display = 'none';
+        window.location.href = "index.html";
+  
+      }).catch((error) => {
+        console.log(error);
+      });		  		  
+    });
+
+
+//------------------------------------------------------map
+const collectionRef = collection(db, 'users');
+const queryRef = query(collectionRef);
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const userId = user.uid;
+    console.log(user);
+
+    const docRef = doc(collectionRef, userId);
+    getDoc(docRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const userData = snapshot.data();
+          const address = userData.address;
+
+          if (address === 'Bagong Silang') {
+            const map = L.map('map');
+            map.setView([8.240747592643158, 124.25343166597617], 15);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">Your Waste Destination Point</a>'
+            }).addTo(map);
+
+            const markers = [
+              { coordinates: [8.24216, 124.25298], title: "Drop point 1" },
+            ];
+
+            markers.forEach(marker => {
+              L.marker(marker.coordinates)
+                .addTo(map)
+                .bindPopup(marker.title);
+            });
+          } else if (address === 'Del Carmen') {
+            const map = L.map('map');
+            map.setView([8.235456164532721, 124.26145422413965], 15);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">Your Waste Destination Point</a>'
+            }).addTo(map);
+
+            const markers = [
+              { coordinates: [8.234059817139258, 124.26136091799596], title: "Drop point Del Carmen" },
+
+            ];
+
+            markers.forEach(marker => {
+              L.marker(marker.coordinates)
+                .addTo(map)
+                .bindPopup(marker.title);
+            });
+          } else if (address === 'Tominobo Proper') {
+            const map = L.map('map');
+            map.setView([8.21049016732303, 124.22757905799365], 15);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">Your Waste Destination Point</a>'
+            }).addTo(map);
+
+            const markers = [
+              { coordinates: [8.204518760004177, 124.22816304411212], title: "Drop point TP" },
+
+            ];
+
+            markers.forEach(marker => {
+              L.marker(marker.coordinates)
+                .addTo(map)
+                .bindPopup(marker.title);
+            });
+          } else if (address === 'Ubaldo Laya') {
+            const map = L.map('map');
+            map.setView([8.224372688193558, 124.24478401257136], 15);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">Your Waste Destination Point</a>'
+            }).addTo(map);
+
+            const markers = [
+              { coordinates: [8.224678931911233, 124.24519404629334], title: "Drop point UL" },
+
+            ];
+
+            markers.forEach(marker => {
+              L.marker(marker.coordinates)
+                .addTo(map)
+                .bindPopup(marker.title);
+            });
+          } else if (address === 'Saray') {
+            const map = L.map('map');
+            map.setView([8.23637479389694, 124.23655074126192], 15);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">Your Waste Destination Point</a>'
+            }).addTo(map);
+
+            const markers = [
+              { coordinates: [8.234800847175707, 124.23743708273179], title: "Drop point S" },
+
+            ];
+
+            markers.forEach(marker => {
+              L.marker(marker.coordinates)
+                .addTo(map)
+                .bindPopup(marker.title);
+            });
+          }
+        } else {
+          console.log("User document not found");
+        }
+      })
+      .catch((error) => {
+        console.log("Error fetching user data:", error);
+      });
+  } else {
+    // User is not logged in
+  }
+});
+
+
+
+
+
+    //bagong silangg 8.240747592643158, 124.25343166597617
+    //del carmen 8.235456164532721, 124.26145422413965
+    //saray 8.232770247723439, 124.23864771967804
+    //tominobo proper 8.207846258275344, 124.22391215185648
+    //ubaldo laya 8.212358539194074, 124.25439712726201
+
+    </script>

@@ -9,10 +9,10 @@
 
   <link rel="stylesheet" href="css/login.css">
 
-  <script defer src="../bundle.js"></script>
+  <script defer src="./bundle.js"></script>
 
   <title>Garbo Monitoring</title>
-  <link rel="icon" type="image/x-icon" href="../assets/img/logo/logo.png">
+  <link rel="icon" type="image/x-icon" href="assets/img/logo/logo.png">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
       <div class="login">
         <div class="d-flex justify-content-center">
           <div class="logo-container">
-            <img src="../assets/img/logo/logo.png" class="logo">
+            <img src="assets/img/logo/logo.png" class="logo">
           </div>
         </div>
 
@@ -56,7 +56,7 @@
           </div>
 
           <div class="d-flex justify-content-center mt-3 login_container">
-            <input type="submit" name="login" value="Sign In" class="btn login_btn">
+            <input type="submit" id="login" name="login" value="Sign In" class="btn login_btn">
           </div>
           </form>
         </div>
@@ -80,3 +80,60 @@
   </script>
 </body>
 </html>
+
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, OAuthProvider, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.19.0/firebase-auth.js";
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBAO-FP4MGApI231xr9bVDZIzsXPPGoVkM",
+  authDomain: "casestudy2-f35ed.firebaseapp.com",
+  projectId: "casestudy2-f35ed",
+  storageBucket: "casestudy2-f35ed.appspot.com",
+  messagingSenderId: "1047601609844",
+  appId: "1:1047601609844:web:98982a767c549dc466a521",
+  measurementId: "G-51VNFNZT0P"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+console.log(app)
+
+
+    
+document.getElementById("login").addEventListener("click", function() {
+          var email =  document.getElementById("admin_email").value;
+          var password = document.getElementById("admin_password").value;
+          
+      //put if statement, if 
+      // else if (address === 'Saray')
+      if (email === "garbomonitoring@gmail.com" && password === "123456789" ){
+        
+          signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user);
+            alert(user.email+" Login successfully!!!");
+            window.location.href = "home.html";
+  })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            alert(errorMessage);
+          });	
+          
+        }else{
+          alert("Check credentials")
+        }
+      
+      });
+      
+      
+  
+</script>
+
